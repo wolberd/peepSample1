@@ -55,62 +55,74 @@ header {
   margin-bottom: 2rem;
 }
 
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
 .add-button {
-  background-color: #4CAF50;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   font-size: 24px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: transform 0.2s;
 }
 
 .add-button:hover {
-  background-color: #45a049;
+  transform: scale(1.1);
 }
 
 /* Person list */
-.person-list {
+.person-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
 .person-card {
-  background-color: white;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.person-card:hover {
+  transform: translateY(-4px);
 }
 
 .person-card h3 {
   margin: 0 0 0.5rem 0;
-  color: #333;
+  color: var(--primary-color);
 }
 
-.person-card .role {
-  color: #666;
-  font-style: italic;
+.person-card p {
   margin: 0.5rem 0;
 }
 
-.person-card .organization {
-  color: #444;
-  margin: 0.5rem 0;
+.role {
+  font-weight: 500;
 }
 
-.person-card .notes {
-  margin: 1rem 0;
-  color: #666;
-  font-size: 0.9rem;
+.organization {
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
-.person-card .date-added {
-  color: #999;
-  font-size: 0.8rem;
+.notes {
   margin-top: 1rem;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.date-added {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  opacity: 0.6;
 }
 
 /* Modal */
@@ -124,14 +136,16 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal {
-  background-color: white;
-  padding: 2rem;
+  background-color: var(--card-background);
   border-radius: 8px;
+  padding: 2rem;
   width: 90%;
   max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .modal h2 {
@@ -145,16 +159,17 @@ header {
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  font-weight: 500;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
-  font-size: 1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .form-group textarea {
@@ -166,37 +181,60 @@ header {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .modal-actions button {
   padding: 0.5rem 1rem;
-  border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
+  transition: opacity 0.2s;
 }
 
 .modal-actions button[type="button"] {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
 }
 
 .modal-actions button[type="submit"] {
-  background-color: #4CAF50;
+  background-color: var(--primary-color);
+  border: none;
   color: white;
 }
 
 .modal-actions button:hover {
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 /* Empty state */
 .empty-state {
   text-align: center;
-  color: #666;
   padding: 3rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  margin-top: 2rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+:root {
+  --primary-color: #2563eb;
+  --background-color: #f8fafc;
+  --card-background: #ffffff;
+  --text-color: #1e293b;
+  --border-color: #e2e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #3b82f6;
+    --background-color: #0f172a;
+    --card-background: #1e293b;
+    --text-color: #f1f5f9;
+    --border-color: #334155;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }

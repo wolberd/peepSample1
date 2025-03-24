@@ -4,17 +4,17 @@ interface PersonListProps {
   persons: Person[];
 }
 
-function PersonList({ persons }: PersonListProps) {
+const PersonList = ({ persons }: PersonListProps) => {
   if (persons.length === 0) {
     return (
       <div className="empty-state">
-        <p>No research contacts added yet. Click the + button to add someone!</p>
+        <p>No contacts added yet. Click the + button to add someone.</p>
       </div>
     );
   }
 
   return (
-    <div className="person-list">
+    <div className="person-grid">
       {persons.map((person) => (
         <div key={person.id} className="person-card">
           <h3>{person.name}</h3>
@@ -28,6 +28,6 @@ function PersonList({ persons }: PersonListProps) {
       ))}
     </div>
   );
-}
+};
 
 export default PersonList; 

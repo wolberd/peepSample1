@@ -6,7 +6,7 @@ interface AddPersonModalProps {
   onAdd: (person: Omit<Person, 'id' | 'dateAdded'>) => void;
 }
 
-function AddPersonModal({ onClose, onAdd }: AddPersonModalProps) {
+const AddPersonModal = ({ onClose, onAdd }: AddPersonModalProps) => {
   const [formData, setFormData] = useState({
     name: '',
     role: '',
@@ -30,7 +30,7 @@ function AddPersonModal({ onClose, onAdd }: AddPersonModalProps) {
         <h2>Add New Contact</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Name</label>
             <input
               type="text"
               id="name"
@@ -40,9 +40,8 @@ function AddPersonModal({ onClose, onAdd }: AddPersonModalProps) {
               required
             />
           </div>
-
           <div className="form-group">
-            <label htmlFor="role">Role:</label>
+            <label htmlFor="role">Role</label>
             <input
               type="text"
               id="role"
@@ -52,9 +51,8 @@ function AddPersonModal({ onClose, onAdd }: AddPersonModalProps) {
               required
             />
           </div>
-
           <div className="form-group">
-            <label htmlFor="organization">Organization:</label>
+            <label htmlFor="organization">Organization</label>
             <input
               type="text"
               id="organization"
@@ -64,9 +62,8 @@ function AddPersonModal({ onClose, onAdd }: AddPersonModalProps) {
               required
             />
           </div>
-
           <div className="form-group">
-            <label htmlFor="notes">Notes:</label>
+            <label htmlFor="notes">Notes</label>
             <textarea
               id="notes"
               name="notes"
@@ -74,19 +71,14 @@ function AddPersonModal({ onClose, onAdd }: AddPersonModalProps) {
               onChange={handleChange}
             />
           </div>
-
           <div className="modal-actions">
-            <button type="button" onClick={onClose}>
-              Cancel
-            </button>
-            <button type="submit">
-              Add Person
-            </button>
+            <button type="button" onClick={onClose}>Cancel</button>
+            <button type="submit">Add Contact</button>
           </div>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default AddPersonModal; 
